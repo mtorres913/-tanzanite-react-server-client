@@ -1,9 +1,13 @@
 import { useState , useEffect} from "react";
 // We must import axios in each component we want to use it
 import axios from 'axios';
+import CreatureForm  from "./CreatureForm.jsx";
 
 function CreatureList() {
+    const [creatureName, setCreatureName] = useState('');
+    const [creatureOrigin, setCreatureOrigin] = useState('');
     const [listOfCreatures, setListOfCreatures] = useState([]);
+ 
 
     const fetchCreatureList = () => {
         axios.get ('/creature').then((response) => {
@@ -20,10 +24,20 @@ function CreatureList() {
         //At this point, React is ready
         fetchCreatureList();
      }, []);
+
+   
      // Empty array is important [] 
     //All components return what we want them to display
     return (
         <div>
+            <CreatureForm 
+            creatureName={creatureName}
+            setCreatureName={setCreatureName}
+            creatureOrigin={creatureOrigin}
+            setCreatureOrigin={setCreatureOrigin}
+            fetchCreatureList={fetchCreatureList}
+            />
+
             <h2>Creature List</h2>
             <ul> 
                 {

@@ -10,12 +10,20 @@ import ClickCounter from '../ClickCounter/ClickCounter.jsx';
     // This looks like HTML but is really JSX create comp, put header into comp, 
 
   function App (){
+    const [headerText, setHeaderText] = useState('Welcome')
     return (
     <div>
+      {/* Header headerTextProp is the name of our prop
+       {headerText} is the value that we're assigning to it */}
       {/** TODO:Create Header and ClickCounter components */}
  {/** Render our Creature List on the DOM */}
-      <Header  />
-      <ClickCounter />
+      <Header  
+      textColor="blue"
+      headerTextProp={headerText}
+      someOtherThing={'Cake'}
+      />
+
+      {/* <ClickCounter /> */}
       <CreatureList />
     </div>
     )
